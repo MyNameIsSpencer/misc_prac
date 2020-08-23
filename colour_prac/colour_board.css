@@ -1,0 +1,19 @@
+#colour-container {
+    margin: 0px;
+    margin-top: 20px;
+    padding: 0px;
+    width: 100vw;
+}
+
+.colour-box {
+    display: inline-block;
+    /* padding-left: 10px; */
+    height: 45px;
+    width: 14.275vw;
+}
+
+.coloumn-box {
+    display: inline-block;
+    width: 14.275vw;
+
+}
