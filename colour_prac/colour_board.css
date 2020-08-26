@@ -1,19 +1,64 @@
+#top-nav {
+    /* background-image: linear-gradient(141deg, #9fb8ad 0%, #1fc8db 51%, #2cb5e8 75%); */
+    /* box-shadow: 10px 0px 8px #888888; */
+    /* background-image: linear-gradient(141deg, royalblue, cornflowerblue, dodgerblue);
+    background-image: linear-gradient(141deg, cornsilk, cornflowerblue); */
+    /* background-image: linear-gradient(141deg, dodgerblue, cornflowerblue, powderblue, paleturquoise, lightcyan, aliceblue   ); */
+    background-image: linear-gradient(90deg,  dodgerblue, paleturquoise, lightcyan, aliceblue, azure   );
+
+
+    height: 60px;
+    z-index: 10;
+}
+
+
+#hamburger-menu {
+    padding-top: 15px;
+    margin-left: 15px;
+    width: 80px;
+    height: 15px;
+    /* background-color: white; */
+}
+
+.hamburger-patty {
+    background-color: white;
+    width: 40px;
+    height: 5px;
+    margin-bottom: 7px;
+    border-radius: 10px;
+}
+
+
+#top-nav-seperator {
+    height: 5px;
+    /* background-image: linear-gradient(141deg, lightcoral, dodgerblue, cornflowerblue, powderblue, paleturquoise, lightcyan, aliceblue   ); */
+    /* background-image: linear-gradient(90deg, lightcyan, deepskyblue, dodgerblue, blue); */
+    /* background-image: linear-gradient(90deg, lightskyblue, cornflowerblue, deepskyblue); */
+    /* linear-gradient(141deg, paleturquoise, yellowgreen, springgreen, greenyellow, aquamarine, darkgreen) */
+    background-color: cornflowerblue;
+}
+
 #colour-container {
     margin: 0px;
-    margin-top: 20px;
+    /* margin-top: 80px; */
     padding: 0px;
     width: 100vw;
 }
 
 .colour-box {
     display: inline-block;
-    /* padding-left: 10px; */
     height: 45px;
     width: 14.275vw;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .coloumn-box {
     display: inline-block;
     width: 14.275vw;
 
+}
+
+.inner-colour-div {
+    padding-top: 5px;
+    padding-left: 5px;
 }

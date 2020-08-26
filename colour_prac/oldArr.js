@@ -1,14 +1,3 @@
-console.warn('Here it is');
-
-const colourTable = document.getElementById('colour-table');
-const colourContainer = document.getElementById('colour-container');
-
-// alphabetical
-// loud, pastel, light, kinda dark, very dark, offwhite, spencers picks, cream, parentName
-
-
-// array of objs
-// { name: 'blue', parentColour: 'blue', labelColour: white/black, defaultOrder: 54(example), attrWords: [attrName: sfdafd, attrOrder: adsfadf], hex?: #000000, rgb?: (123,123,123) }
 const colourArr = [
     // {
     //     name: ,
@@ -894,30 +883,6 @@ const colourArr = [
 
     // },
 
+
    
 ];
-
-
-
-console.warn('=============')
-console.log(colourContainer)
-console.warn('=============')
-
-
-
-for (i = 0; i < 20; i++ ) {
-    for (j = i; j < (i + 121); j += 20) {
-        createColourBox(colourArr[j]);
-    }
-}
-
-function createColourBox(colourObj) {
-    let colourDivver = document.createElement('div');
-    colourDivver.id = colourObj.name;
-    colourDivver.style.backgroundColor = colourObj.name;
-    colourDivver.classList.add('colour-box');
-    colourDivver.style.color = colourObj.labelColour;
-    // colourDivver.innerText = `${colourObj.name}`;
-    colourDivver.innerHTML = `<div class="inner-colour-div">${colourObj.name}<div>`;
-    colourContainer.appendChild(colourDivver);
-}
