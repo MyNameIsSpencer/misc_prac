@@ -148,7 +148,26 @@ function reorganizeColourMatrixLoud() {
 
 
 
+function reorganizeColourMatrixColourGroup(targetColour) {
+    let colourGroupArr = [];
+    colourArr.map(item => {
+        if (item.parentColour === targetColour) {
 
+            colourGroupArr.push(item);
+
+            // item.attrWords.forEach(attr => {
+            //     if (attr.attrName === 'parent' && ) {
+            //         colourGroupArr.push(item);
+            //     }
+            // });
+        }
+    });
+    colourContainer.innerHTML = '';
+    for (i = 0; i < colourGroupArr.length; i++ ) {
+        createColourBox(colourGroupArr[i]);
+    }
+
+}
 
 
 const colourSets = document.getElementById('colour-sets');
@@ -167,10 +186,22 @@ const colourSets = document.getElementById('colour-sets');
                 <h2 id="dark" class="seperator-option" onclick="reorganizeColourMatrixDark()">Dark</h2>
                 <h2 id="loud" class="seperator-option" onclick="reorganizeColourMatrixLoud()">Loud</h2>
                 <h2 id="offwhite" class="seperator-option" onclick="reorganizeColourMatrixOffWhite()">Offwhite</h2>
-                <h2 id="colourGroup" class="seperator-option">Colour Group</h2>
-                <h2 id="picks" class="seperator-option">Picks</h2>
                 <h2 id="pastel" class="seperator-option" onclick="reorganizeColourMatrixPastel()">Pastel</h2>
                 <h2 id="original" class="seperator-option" onclick="loopColours(createColourBox, colourArr)">Original</h2>
+
+                <h2 id="yellow" class="seperator-option" onclick="reorganizeColourMatrixColourGroup('yellow')">Yellow</h2>
+                <h2 id="orange" class="seperator-option" onclick="reorganizeColourMatrixColourGroup('orange')">Orange</h2>
+                <h2 id="red" class="seperator-option" onclick="reorganizeColourMatrixColourGroup('red')">Red</h2>
+                <h2 id="pink" class="seperator-option" onclick="reorganizeColourMatrixColourGroup('pink')">Pink</h2>
+                <h2 id="brown" class="seperator-option" onclick="reorganizeColourMatrixColourGroup('brown')">Brown</h2>
+                <h2 id="purple" class="seperator-option" onclick="reorganizeColourMatrixColourGroup('purple')">Purple</h2>
+                <h2 id="blue" class="seperator-option" onclick="reorganizeColourMatrixColourGroup('blue')">Blue</h2>
+                <h2 id="green" class="seperator-option" onclick="reorganizeColourMatrixColourGroup('green')">Green</h2>
+                <h2 id="white" class="seperator-option" onclick="reorganizeColourMatrixColourGroup('white')">White</h2>
+                <h2 id="gray" class="seperator-option" onclick="reorganizeColourMatrixColourGroup('gray')">Gray</h2>
+                <h2 id="black" class="seperator-option" onclick="reorganizeColourMatrixColourGroup('black')">Black</h2>
+               
+               
             `
         }
 });
