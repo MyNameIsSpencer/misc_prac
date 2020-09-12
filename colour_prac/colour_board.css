@@ -60,7 +60,7 @@
 
 .colour-box {
     display: inline-block;
-    height: 45px;
+    /* height: 45px; */
     /* width: 14.275vw; */
     font-family: Arial, Helvetica, sans-serif;
 }

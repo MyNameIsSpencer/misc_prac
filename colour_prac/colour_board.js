@@ -2,6 +2,7 @@
 const colourTable = document.getElementById('colour-table');
 const colourContainer = document.getElementById('colour-container');
 const topNavSeperator = document.getElementById('top-nav-seperator');
+const defaultHeight = `${100 / 7}vw`
 
 loopAllColours(createColourBox, colourArr);
 
@@ -21,7 +22,7 @@ function loopAllColours(iteratorFunction, arrSet) {
 // width: 14.275vw;
 
 
-function createColourBox(colourItem, colWidth = '14.275vw') {
+function createColourBox(colourItem, colWidth = defaultHeight, colHeight = '45px') {
     let colourDivver = document.createElement('div');
     colourDivver.id = colourItem.name;
     colourDivver.style.backgroundColor = colourItem.name;
@@ -29,6 +30,7 @@ function createColourBox(colourItem, colWidth = '14.275vw') {
     colourDivver.style.color = colourItem.labelColour;
     colourDivver.innerHTML = `<div class="inner-colour-div">${colourItem.name}<div>`;
     colourDivver.style.width = colWidth;
+    colourDivver.style.height = colHeight;
     colourContainer.appendChild(colourDivver);
 }
 
@@ -45,7 +47,7 @@ function reorganizeColourMatrixAlphabetically() {
 }
 // width: 14.275vw;
 
-function reorganizeColourMatrix(targetCategory, targetWord, colWidth) {
+function reorganizeColourMatrix(targetCategory, targetWord, colWidth, colHeight) {
     let carr = [];
 
     if (targetCategory === 'attrWords') {
@@ -63,14 +65,14 @@ function reorganizeColourMatrix(targetCategory, targetWord, colWidth) {
     }
     colourContainer.innerHTML = '';
     for (i = 0; i < carr.length; i++ ) {
-        createColourBox(carr[i], colWidth);
+        createColourBox(carr[i], colWidth, colHeight);
     }
 }
 
 
 const colourSets = document.getElementById('colour-sets');
 colourSets.addEventListener('click', function () {
-    colourSets.style.backgroundColor = 'cornflowerblue';
+    // colourSets.style.backgroundColor = 'cornflowerblue';
     let topNavSeperator = document.getElementById('top-nav-seperator');
     if (topNavSeperator.style.height === '140px') {
         topNavSeperator.style.height = '5px';
@@ -84,17 +86,17 @@ colourSets.addEventListener('click', function () {
                 <h2 id="offwhite" class="seperator-option" onclick="reorganizeColourMatrix('attrWords', 'offWhite', '50vw')">Offwhite</h2>
                 <h2 id="pastel" class="seperator-option" onclick="reorganizeColourMatrix('attrWords', 'pastel', '${100 / 3}vw')">Pastel</h2>
                 <h2 id="original" class="seperator-option" onclick="loopAllColours(createColourBox, colourArr)">Original</h2>
-                <h2 id="yellow" class="seperator-option" onclick="reorganizeColourMatrix('parentColour', 'yellow', '100vw')">Yellow</h2>
-                <h2 id="orange" class="seperator-option" onclick="reorganizeColourMatrix('parentColour', 'orange', '100vw')">Orange</h2>
-                <h2 id="red" class="seperator-option" onclick="reorganizeColourMatrix('parentColour', 'red', '100vw')">Red</h2>
-                <h2 id="pink" class="seperator-option" onclick="reorganizeColourMatrix('parentColour', 'pink', '100vw')">Pink</h2>
+                <h2 id="yellow" class="seperator-option" onclick="reorganizeColourMatrix('parentColour', 'yellow', '100vw', '10vh')">Yellow</h2>
+                <h2 id="orange" class="seperator-option" onclick="reorganizeColourMatrix('parentColour', 'orange', '100vw', '10vh')">Orange</h2>
+                <h2 id="red" class="seperator-option" onclick="reorganizeColourMatrix('parentColour', 'red', '100vw', '10vh')">Red</h2>
+                <h2 id="pink" class="seperator-option" onclick="reorganizeColourMatrix('parentColour', 'pink', '100vw', '10vh')">Pink</h2>
                 <h2 id="brown" class="seperator-option" onclick="reorganizeColourMatrix('parentColour', 'brown', '100vw')">Brown</h2>
                 <h2 id="purple" class="seperator-option" onclick="reorganizeColourMatrix('parentColour', 'purple', '100vw')">Purple</h2>
-                <h2 id="blue" class="seperator-option" onclick="reorganizeColourMatrix('parentColour', 'blue', '100vw')">Blue</h2>
+                <h2 id="blue" class="seperator-option" onclick="reorganizeColourMatrix('parentColour', 'blue', '50vw')">Blue</h2>
                 <h2 id="green" class="seperator-option" onclick="reorganizeColourMatrix('parentColour', 'green', '50vw')">Green</h2>
-                <h2 id="white" class="seperator-option" onclick="reorganizeColourMatrix('parentColour', 'white', '100vw')">White</h2>
-                <h2 id="gray" class="seperator-option" onclick="reorganizeColourMatrix('parentColour', 'gray', '100vw')">Gray</h2>
-                <h2 id="black" class="seperator-option" onclick="reorganizeColourMatrix('parentColour', 'black', '100vw')">Black</h2>
+                <h2 id="white" class="seperator-option" onclick="reorganizeColourMatrix('parentColour', 'white', '50vw')">White</h2>
+                <h2 id="gray" class="seperator-option" onclick="reorganizeColourMatrix('parentColour', 'gray', '100vw', '10vh')">Gray</h2>
+                <h2 id="black" class="seperator-option" onclick="reorganizeColourMatrix('parentColour', 'black', '100vw', '100vh')">Black</h2>
             </div>
         `
     }
