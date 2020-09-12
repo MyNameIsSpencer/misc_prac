@@ -4,27 +4,14 @@ const colourTable = document.getElementById('colour-table');
 const colourContainer = document.getElementById('colour-container');
 const topNavSeperator = document.getElementById('top-nav-seperator');
 
-// alphabetical
-// loud, pastel, light, kinda dark, very dark,
-//  offwhite, spencers picks, cream, parentName
-
-
 // array of objs
 // { name: 'blue', parentColour: 'blue', labelColour: white/black, defaultOrder: 54(example), attrWords: [attrName: sfdafd, attrOrder: adsfadf], hex?: #000000, rgb?: (123,123,123) }
-
-
 
 
 console.warn('=============')
 console.log(colourContainer)
 console.warn('=============')
 
-
-
-
-// for (i = 0; i < 140; i++ ) {
-//     colourArr[i].defaultOrder = i;
-// }
 
 console.warn(colourArr.length)
 loopColours(createColourBox, colourArr);
@@ -106,7 +93,6 @@ function reorganizeColourMatrixDark() {
 
 }
 
-
 function reorganizeColourMatrixOffWhite() {
     let offWhiteArr = [];
     colourArr.map(item => {
@@ -142,31 +128,50 @@ function reorganizeColourMatrixLoud() {
     for (i = 0; i < loudCarr.length; i++ ) {
         createColourBox(loudCarr[i]);
     }
-
 }
-
-
-
-
 function reorganizeColourMatrixColourGroup(targetColour) {
     let colourGroupArr = [];
     colourArr.map(item => {
         if (item.parentColour === targetColour) {
 
             colourGroupArr.push(item);
-
-            // item.attrWords.forEach(attr => {
-            //     if (attr.attrName === 'parent' && ) {
-            //         colourGroupArr.push(item);
-            //     }
-            // });
         }
     });
     colourContainer.innerHTML = '';
     for (i = 0; i < colourGroupArr.length; i++ ) {
         createColourBox(colourGroupArr[i]);
     }
+}
 
+function reorganizeColourMatrix(targetCategory, targetWord) {
+    console.warn(targetWord);
+    let carr = [];
+
+    if (targetCategory === 'attrWords') {
+        colourArr.map(item => {
+            if (item.attrWords && Number.isInteger(item.attrWords[targetWord])) {
+                carr.push(item);
+            }
+        });
+    // }
+
+    // if (isAttr) {
+    //     colourArr.map(item => {
+    //         if (item.attrWords && Number.isInteger(item.attrWords[targetWord])) {
+    //             carr.push(item);
+    //         }
+    //     });
+    } else {
+        colourArr.map(item => {
+            if (item[targetCategory]) {
+                carr.push(item);
+            }
+        });
+    }
+    colourContainer.innerHTML = '';
+    for (i = 0; i < carr.length; i++ ) {
+        createColourBox(carr[i]);
+    }
 }
 
 
@@ -179,35 +184,33 @@ const colourSets = document.getElementById('colour-sets');
             topNavSeperator.style.height = '5px';
         } else {
             topNavSeperator.style.height = '140px';
+            // reorganizeColourMatrix
 
-            // <button onclick="myFunction()">Click me</button>
             topNavSeperator.innerHTML = `
-                <h2 id="alphabetical" class="seperator-option" onclick="reorganizeColourMatrixAlphabetically()">Alphabetical</h2>
-                <h2 id="dark" class="seperator-option" onclick="reorganizeColourMatrixDark()">Dark</h2>
-                <h2 id="loud" class="seperator-option" onclick="reorganizeColourMatrixLoud()">Loud</h2>
-                <h2 id="offwhite" class="seperator-option" onclick="reorganizeColourMatrixOffWhite()">Offwhite</h2>
-                <h2 id="pastel" class="seperator-option" onclick="reorganizeColourMatrixPastel()">Pastel</h2>
-                <h2 id="original" class="seperator-option" onclick="loopColours(createColourBox, colourArr)">Original</h2>
+                <div style="padding-left: 20px">
+                    <h2 id="alphabetical" class="seperator-option" onclick="reorganizeColourMatrixAlphabetically()">Alphabetical</h2>
+                    <h2 id="dark" class="seperator-option" onclick="reorganizeColourMatrix('attrWords', 'dark')">Dark</h2>
+                    <h2 id="loud" class="seperator-option" onclick="reorganizeColourMatrix('attrWords', 'loud')">Loud</h2>
+                    <h2 id="offwhite" class="seperator-option" onclick="reorganizeColourMatrix('attrWords', 'offWhite')">Offwhite</h2>
 
-                <h2 id="yellow" class="seperator-option" onclick="reorganizeColourMatrixColourGroup('yellow')">Yellow</h2>
-                <h2 id="orange" class="seperator-option" onclick="reorganizeColourMatrixColourGroup('orange')">Orange</h2>
-                <h2 id="red" class="seperator-option" onclick="reorganizeColourMatrixColourGroup('red')">Red</h2>
-                <h2 id="pink" class="seperator-option" onclick="reorganizeColourMatrixColourGroup('pink')">Pink</h2>
-                <h2 id="brown" class="seperator-option" onclick="reorganizeColourMatrixColourGroup('brown')">Brown</h2>
-                <h2 id="purple" class="seperator-option" onclick="reorganizeColourMatrixColourGroup('purple')">Purple</h2>
-                <h2 id="blue" class="seperator-option" onclick="reorganizeColourMatrixColourGroup('blue')">Blue</h2>
-                <h2 id="green" class="seperator-option" onclick="reorganizeColourMatrixColourGroup('green')">Green</h2>
-                <h2 id="white" class="seperator-option" onclick="reorganizeColourMatrixColourGroup('white')">White</h2>
-                <h2 id="gray" class="seperator-option" onclick="reorganizeColourMatrixColourGroup('gray')">Gray</h2>
-                <h2 id="black" class="seperator-option" onclick="reorganizeColourMatrixColourGroup('black')">Black</h2>
-               
+
+
+                    <h2 id="pastel" class="seperator-option" onclick="reorganizeColourMatrix('attrWords', 'pastel')">Pastel</h2>
+                    <h2 id="original" class="seperator-option" onclick="loopColours(createColourBox, colourArr)">Original</h2>
+
+                    <h2 id="yellow" class="seperator-option" onclick="reorganizeColourMatrix('parentColour', 'yellow')">Yellow</h2>
+                    <h2 id="orange" class="seperator-option" onclick="reorganizeColourMatrixColourGroup('orange')">Orange</h2>
+                    <h2 id="red" class="seperator-option" onclick="reorganizeColourMatrixColourGroup('red')">Red</h2>
+                    <h2 id="pink" class="seperator-option" onclick="reorganizeColourMatrixColourGroup('pink')">Pink</h2>
+                    <h2 id="brown" class="seperator-option" onclick="reorganizeColourMatrixColourGroup('brown')">Brown</h2>
+                    <h2 id="purple" class="seperator-option" onclick="reorganizeColourMatrixColourGroup('purple')">Purple</h2>
+                    <h2 id="blue" class="seperator-option" onclick="reorganizeColourMatrixColourGroup('blue')">Blue</h2>
+                    <h2 id="green" class="seperator-option" onclick="reorganizeColourMatrixColourGroup('green')">Green</h2>
+                    <h2 id="white" class="seperator-option" onclick="reorganizeColourMatrixColourGroup('white')">White</h2>
+                    <h2 id="gray" class="seperator-option" onclick="reorganizeColourMatrixColourGroup('gray')">Gray</h2>
+                    <h2 id="black" class="seperator-option" onclick="reorganizeColourMatrixColourGroup('black')">Black</h2>
+                </div>
                
             `
         }
 });
-
-// document.getElementById("myDIV").removeEventListener("mousemove", myFunction);
-
-// alphabetical
-// loud, pastel, light, very dark,
-//  offwhite, spencers picks, cream, parentName
