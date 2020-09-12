@@ -2,10 +2,10 @@
 const colourTable = document.getElementById('colour-table');
 const colourContainer = document.getElementById('colour-container');
 const topNavSeperator = document.getElementById('top-nav-seperator');
+
 const defaultHeight = `${100 / 7}vw`
 
 loopAllColours(createColourBox, colourArr);
-
 
 function loopAllColours(iteratorFunction, arrSet) {
     colourContainer.innerHTML = '';
@@ -17,10 +17,6 @@ function loopAllColours(iteratorFunction, arrSet) {
         }
     }
 }
-
-
-// width: 14.275vw;
-
 
 function createColourBox(colourItem, colWidth = defaultHeight, colHeight = '45px') {
     let colourDivver = document.createElement('div');
@@ -34,7 +30,6 @@ function createColourBox(colourItem, colWidth = defaultHeight, colHeight = '45px
     colourContainer.appendChild(colourDivver);
 }
 
-
 function reorganizeColourMatrixAlphabetically() {
     let alphaCarr = [];
     colourArr.map(item => alphaCarr.push(item));
@@ -45,11 +40,9 @@ function reorganizeColourMatrixAlphabetically() {
     });
     loopAllColours(createColourBox, alphaCarr)
 }
-// width: 14.275vw;
 
 function reorganizeColourMatrix(targetCategory, targetWord, colWidth, colHeight) {
     let carr = [];
-
     if (targetCategory === 'attrWords') {
         colourArr.map(item => {
             if (item.attrWords && Number.isInteger(item.attrWords[targetWord])) {
@@ -72,7 +65,11 @@ function reorganizeColourMatrix(targetCategory, targetWord, colWidth, colHeight)
 
 const colourSets = document.getElementById('colour-sets');
 colourSets.addEventListener('click', function () {
-    // colourSets.style.backgroundColor = 'cornflowerblue';
+    if (colourSets.style.backgroundColor.length < 1) {
+        colourSets.style.backgroundColor = 'cornflowerblue';
+    } else {
+        colourSets.style.backgroundColor = '';
+    }
     let topNavSeperator = document.getElementById('top-nav-seperator');
     if (topNavSeperator.style.height === '140px') {
         topNavSeperator.style.height = '5px';

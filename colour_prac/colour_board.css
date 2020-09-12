@@ -24,8 +24,10 @@
 }
 
 #colour-sets {
+    height: 50px;
+    width: 105px;
     padding-top: 15px;
-    margin-left: 15px;
+    padding-left: 15px;
     display: block;
     position: relative;
     color: white;
